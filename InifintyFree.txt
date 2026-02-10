@@ -1,2 +1,0 @@
-if0_41095248 ---Intesar123--MySQL Database Name(if0_41095248_XXX)--MySQL Hostname(sql303.infinityfree.com)--MySQL Port (optional)
-3306
