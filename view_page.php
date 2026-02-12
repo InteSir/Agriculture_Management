@@ -1,10 +1,42 @@
 
 <?php
-    error_reporting(E_ALL ^ E_NOTICE);
-    session_start();
-    include('connection.php');
+error_reporting(E_ALL ^ E_NOTICE);
+session_start();
+include('connection.php');
+
+
+if (isset($_SESSION['user_id'])){
+    $user_id=$_SESSION['user_id'];
+    }else{
+        $user_id=2;
+    }
     $sql='SELECT * FROM product';
     $all_product=mysqli_query($conn,$sql);
+
+    if (isset($_POST['add_to_cart'])) {
+        $product_id = $_POST['product_id'];
+        $qty = 1;
+
+        $sql = "SELECT price FROM product WHERE product_id='$product_id'";
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($res);
+        $product_price = $row['price'];
+
+        $check = mysqli_query($conn,
+            "SELECT * FROM cart WHERE user_id='$user_id' AND product_id='$product_id'"
+        );
+
+        if (mysqli_num_rows($check) == 0) {
+            mysqli_query($conn,
+                "INSERT INTO cart (user_id,product_id,price,quantity)
+                VALUES ('$user_id','$product_id','$product_price','$qty')"
+            );
+        }
+    }
+
+
+
+
 
 ?>
 
@@ -26,6 +58,7 @@
 
 <body>
     <?php include('header.php'); ?>
+     <?php include('shopping_cart.php'); ?>
     <main>
         <div class="product_first">
             <div class="product_b">
@@ -102,7 +135,8 @@
                             
                             <div class="con">
                                     <h2><?php echo $row["name"];?><span>(<?php echo $row["quantity"];?>kg)</span></h2>
-                                    <img class='svg' src="assets/img/love.png" name='add_to_wishlist' name='add_to_wishlist' width="30px">
+   
+
 
 
                             </div>
@@ -138,6 +172,9 @@
     </main>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="script.js"></script>
     <?php include 'footer.php'?>
+    <?php include('alert.php'); ?>
 </body>
 </html>

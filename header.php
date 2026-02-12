@@ -74,11 +74,9 @@
 
                         if ($row = mysqli_fetch_assoc($all)) {
                             // Checking the user_type
-                            if ($row['user_type'] == 'farmer') {
+                        
                                 echo "<a href='farmer.php'>Dashboard</a>";
-                            } else {
-                                echo "<a href='customer.php'>Profile</a>";
-                            }
+
                         } else {
                             echo "User not found.";
                         }
@@ -111,7 +109,8 @@
                 
             </div>
             <div class="user-box">
-                <p>Username :  <span>
+                <h1 >Username : </h1>
+                <p> <span>
                     <?php 
                         if (isset($_SESSION['username'])){
                             echo $_SESSION['username'];
@@ -120,8 +119,10 @@
 
                         }
                      ?>
-                    </span></p>
-                <p>Email :  <span>
+                    </span>
+                </p>
+                <h1>Email : </h1>
+                <p>  <span>
                 <?php 
                     if (isset($_SESSION['email'])){
                         echo $_SESSION['email'];

@@ -27,7 +27,6 @@
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username']=$row['fullname'];
                 $_SESSION['user_type']=$row['user_type'];
-                
                 $_SESSION['email']=$row['email'];
     
                 $success_msg[]= 'YOU ARE SUCCESSFULY LOGGED IN';

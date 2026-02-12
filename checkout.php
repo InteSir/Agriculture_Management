@@ -227,13 +227,25 @@ if (isset($_SESSION['user_id'])){
                         ?>
 
                         <div class="detail">
-                            <div class="profile-img">
-                                <img class='grid-row-span-3' src="assets/img/user.png" id="user-btn" width="30px">
+                            <div class="profile-img" >
+                                <img class='grid-row-span-2' src="assets/img/user.png" id="user-btn" width="10px">
                             </div>
-                            <div class="profile-details">
-                                <h2><?php echo $_SESSION['username'];?>
-                                <h2><img src="assets/img/icons8-telephone-50.png" alt="" style='width:30px;'><?php echo $row['number']; ?></h2>
-                                <p><img src="assets/img/icons8-home-50.png" alt="" style='width:30px;'><?php echo $row['address']; ?></p>
+
+
+                            <div class="profile-info">
+                                <div class="info-item" style="background:none"> 
+                                    <ion-icon name="person-outline"></ion-icon>
+                                    <p style="color:#fff;font-size: 1.4rem;"><?php echo $_SESSION['username'];?></p>
+                                </div>
+                                <div class="info-item"  style="background:none"> 
+                                    <ion-icon name="call-outline"></ion-icon>
+                                    <p  style="color:#fff;font-size: 1.2rem;"><?php echo $row['number']; ?></p>
+                                </div>
+                                <div class="info-item"  style="background:none">
+                                     <ion-icon name="location-outline"></ion-icon>
+                                     <p  style="color:#fff;font-size: 1rem;"><?php echo $row['address']; ?></p>
+                                </div>
+                               
                             </div>
 
                         </div>

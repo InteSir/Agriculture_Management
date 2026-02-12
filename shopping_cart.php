@@ -116,13 +116,14 @@ if (isset($_POST['action']) && isset($_POST['product_id'])) {
         </div>
         
         <div class="btn">
-            <button class="close">CLOSE</button>
+            <button  type="button" class="close">CLOSE</button>
             <button class="checkout" onclick="window.location.href='checkout.php';">CHECK OUT</button>
             
         </div>
     </div>
 
     <script>
+
         function updateCart(action, product_id) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "shopping_cart.php", true);
